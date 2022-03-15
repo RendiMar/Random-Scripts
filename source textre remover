@@ -71,6 +71,15 @@ local function UDNLSPG_fake_script() -- re.LocalScript
 	local script = Instance.new('LocalScript', re)
 
 	local smooth = false
+	
+	local function SendNotification(title,text,duration,...)
+    		game.StarterGui:SetCore("SendNotification", {
+      		Title = title;
+      		Text = text;
+      		Icon = "";
+      		Duration = duration;
+    		})
+  	end
 
 	script.Parent.MouseButton1Down:Connect(function()
 		for _, object in ipairs(workspace:GetDescendants()) do
@@ -79,6 +88,7 @@ local function UDNLSPG_fake_script() -- re.LocalScript
 				if smooth and object:FindFirstChild("OriginalMaterial") then
 					object.Material = object.OriginalMaterial.Value
 					object.OriginalMaterial:Destroy()
+					SendNotification("RenDev","Removing Textures... Please Wait!",5)
 				elseif not smooth then
 					wait(0.1)
 					local originalMaterial = Instance.new("StringValue")
