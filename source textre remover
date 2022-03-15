@@ -75,12 +75,12 @@ local function UDNLSPG_fake_script() -- re.LocalScript
 	script.Parent.MouseButton1Down:Connect(function()
 		for _, object in ipairs(workspace:GetDescendants()) do
 			if object:IsA("BasePart") then
-				wait(0.3)
+				wait(0.1)
 				if smooth and object:FindFirstChild("OriginalMaterial") then
 					object.Material = object.OriginalMaterial.Value
 					object.OriginalMaterial:Destroy()
 				elseif not smooth then
-					wait(0.3)
+					wait(0.1)
 					local originalMaterial = Instance.new("StringValue")
 					originalMaterial.Name = "OriginalMaterial"
 					originalMaterial.Value = object.Material.Name
@@ -89,7 +89,7 @@ local function UDNLSPG_fake_script() -- re.LocalScript
 				end
 				for _, object in ipairs(workspace:GetDescendants()) do
 					if object:IsA("Decal") then
-						wait(0.5)
+						wait(0.3)
 						object:Destroy()
 					end
 				end
